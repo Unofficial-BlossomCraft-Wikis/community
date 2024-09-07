@@ -11,7 +11,7 @@ import "./tailwind.css";
 import clsx from "clsx"
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "remix-themes"
 import { themeSessionResolver } from "./sessions.server"
-import { LoaderFunctionArgs } from "@remix-run/node";
+import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { Toaster } from "~/components/ui/sonner"
 import NavBar from "./components/navbar";
 
