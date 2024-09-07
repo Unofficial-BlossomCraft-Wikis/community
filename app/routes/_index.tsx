@@ -1,5 +1,4 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
-import { ModeToggle } from "~/components/mode-toggle"
+import { redirect, type MetaFunction } from "@remix-run/cloudflare";
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,10 +7,10 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export function loader() {
+  return redirect("/wiki");
+}
+
 export default function Index() {
-  return (
-    <div className="">
-      <ModeToggle />
-    </div>
-  );
+  return (<div></div>)
 }

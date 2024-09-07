@@ -8,14 +8,14 @@ export default function Index() {
   const item = items.find((item) => item.independentpath === location.pathname);
   if (!item) {
     return (
-      <div className="rounded-lg bg-background w-full h-full scroll-auto mx-2 mb-2 p-2 justify-center text-center flex flex-1 flex-col">
+      <div className="rounded-lg bg-background w-full h-full scroll-auto mx-2 mb-2 p-2 justify-center text-center flex flex-1 flex-col" style={{ viewTransitionName: "main-screen",}}>
         <h1 className="text-[10vw] font-bold">Item Not Found</h1>
       </div>
     );
   }
   return (
-    <div className="rounded-lg bg-background w-full h-full scroll-auto mx-2 mb-2 p-2">
-      <h1 className="text-3xl">{item.name}</h1>
+    <div className="rounded-lg bg-background w-full h-full scroll-auto mx-2 mb-2 p-2" style={{ viewTransitionName: "main-screen",}}>
+      <h1 className="text-3xl" style={{ viewTransitionName: `title-${item.pathextention}` }}>{item.name}</h1>
       <img src={item.image} alt={item.name} />
     </div>
   );
