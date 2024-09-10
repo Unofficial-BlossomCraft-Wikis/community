@@ -92,7 +92,7 @@ export default async function HomePage() {
                 Accounts for features such as Trading and the player warp
                 registry (<b className="text-red-600">REMEMBER:</b> this is an
                 unofficial site, this account is in no way connected to
-                BlossomCraft and is not stored on blossomcraft run servers.)
+                BlossomCraft and is not stored on blossomcraft run servers. If you are not comfortable with this, please <b>do not</b> make an account.)
               </li>
             </ul>
             <h2>What is the BCUW?</h2>
