@@ -1,3 +1,5 @@
+import { APIAvatarDecorationData, APIUser, GuildMemberFlags, Snowflake } from "discord-api-types/v10";
+
 export const WikiPages = [
   {
     "name": "Home",
@@ -51,4 +53,20 @@ export type Items = {
   unbreakable?: boolean;
   dyed?: boolean;
   customtexture?: boolean;
+}
+
+export type DiscordGuildMemberType = {
+      user?: APIUser;
+      nick?: string;
+      avatar?: string;
+      roles?: Snowflake[];
+      joined_at?: string;
+      premium_since?: string;
+      deaf?: boolean;
+      mute?: boolean;
+      flags?: GuildMemberFlags;
+      pending?: boolean;
+      permissions?: string;
+      communication_disabled_until?: string;
+      avatar_decoration_data?: APIAvatarDecorationData;
 }

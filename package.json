@@ -23,6 +23,7 @@
     "@t3-oss/env-nextjs": "^0.10.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "discord-api-types": "^0.37.100",
     "drizzle-orm": "^0.33.0",
     "geist": "^1.3.0",
     "lucide-react": "^0.439.0",

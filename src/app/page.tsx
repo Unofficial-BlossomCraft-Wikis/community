@@ -5,7 +5,7 @@ import { getUserId, getUserNickname } from "~/lib/getusernickname";
 
 export default async function HomePage() {
   const user = await currentUser();
-  let userNickname: string | null = null;
+  let userNickname: string | null | undefined = null;
   if (user) {
     const token = await getOAuthToken();
     console.log(token);
