@@ -15,5 +15,5 @@ export async function GET(request: Request) {
   //   redirect(randomCrate.path);
   // }
   // return response;
-  return null
+  return void null
 }

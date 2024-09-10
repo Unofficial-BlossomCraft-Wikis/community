@@ -15,6 +15,5 @@ export async function GET(request: Request) {
   //   redirect(randomItem.path);
   // }
   // return response;
-  
-  return null
+  return void null
 }
