@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { UserButton, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import BCUW from '../../public/bcuwOnlyTitleNormal.png'
 
 export default function Navbar() {
   return (
@@ -11,7 +12,7 @@ export default function Navbar() {
         <Button variant="outline" asChild>
           <Link href="/">
             <Image
-              src="/bcuwOnlyTitleNormal.png"
+              src={BCUW}
               alt="BCUW"
               width={64}
               height={64}

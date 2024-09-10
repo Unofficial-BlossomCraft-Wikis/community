@@ -3,6 +3,7 @@ import { getOAuthToken } from "~/lib/auth/discord";
 import { getUserNickname } from "~/lib/getusernickname";
 import Image from "next/image";
 import { data } from "~/server/queries";
+import BCUW from '../../public/bcuwTitleNormal.png'
 
 export default async function HomePage() {
   const user = await currentUser();
@@ -43,7 +44,7 @@ export default async function HomePage() {
             </div>
             <div className="flex items-center justify-center md:basis-1/2">
               <Image
-                src="/bcuwTitleNormal.png"
+                src={BCUW}
                 alt="BCUW"
                 className="h-auto w-1/2"
                 style={{
