@@ -17,7 +17,7 @@ const fetchGuildMember = async (accessToken: string) => {
       console.error("Response text:", errorText);
       throw new Error("Failed to fetch guild member");
     }
-
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const memberData: DiscordGuildMemberType = await response.json();
     console.log(memberData);
     return memberData;
