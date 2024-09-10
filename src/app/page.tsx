@@ -14,10 +14,18 @@ export default async function HomePage() {
       if (token) {
         userNickname = await getUserNickname(token);
       }
-      data.post.createUser(user.id, userNickname);
+      if (userNickname != null || userNickname != undefined) {
+        await data.post.createUser(user.id, userNickname);
+      }
     }
-    if (user_data?.discord_username) {
-      userNickname = user_data?.discord_username;
+    if (
+      user_data != null &&
+      user_data != undefined &&
+      user_data !== "user not found"
+    ) {
+      if (user_data?.discord_username) {
+        userNickname = user_data?.discord_username;
+      }
     }
   }
   return (
@@ -34,7 +42,7 @@ export default async function HomePage() {
               </p>
             </div>
             <div className="flex items-center justify-center md:basis-1/2">
-              <Image 
+              <Image
                 src="/bcuwTitleNormal.png"
                 alt="BCUW"
                 className="h-auto w-1/2"
