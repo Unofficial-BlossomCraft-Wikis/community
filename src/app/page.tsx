@@ -1,7 +1,6 @@
 import { currentUser } from "@clerk/nextjs/server";
-import Image from "next/image";
 import { getOAuthToken } from "~/lib/auth/discord";
-import { getUserId, getUserNickname } from "~/lib/getusernickname";
+import { getUserNickname } from "~/lib/getusernickname";
 
 export default async function HomePage() {
   const user = await currentUser();
