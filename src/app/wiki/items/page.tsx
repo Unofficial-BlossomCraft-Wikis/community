@@ -1,8 +1,8 @@
 // import RandomItem from "~/components/random/item";
 
-export default function HomePage({ searchParams }: { searchParams: { [key: string]: string | undefined } }) {
+export default function HomePage({ searchParams }: { searchParams: Record<string, string | undefined> }) {
   const isInf = searchParams.inf === "true"; // Adjusting to ensure it's a boolean
-  const infSlug = searchParams.infslug || ""; // Providing a default value if undefined
+  const infSlug = searchParams.infslug ?? ""; // Providing a default value only if it's null or undefined
 
   console.log(isInf, infSlug);
 
