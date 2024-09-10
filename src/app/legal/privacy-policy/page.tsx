@@ -990,7 +990,7 @@ export default function HomePage() {
           <li>
             Right to obtain a list of the categories of third parties to which
             we have disclosed personal data (as permitted by applicable law,
-            including California&apos;s and Delaware's privacy law)
+            including California&apos;s and Delaware&apos;s privacy law)
           </li>
           <li>
             Right to obtain a list of specific third parties to which we have
@@ -1084,7 +1084,7 @@ export default function HomePage() {
         <h3>Australia and New Zealand</h3>
         <p>
           We collect and process your personal information under the obligations
-          and conditions set by Australia's Privacy Act 1988 and New Zealand's
+          and conditions set by Australia&apos;s Privacy Act 1988 and New Zealand&apos;s
           Privacy Act 2020 (Privacy Act).
         </p>
         <p>
@@ -1120,7 +1120,7 @@ export default function HomePage() {
           <Link href="https://www.oaic.gov.au/privacy/privacy-complaints/lodge-a-privacy-complaint-with-us">
             Office of the Australian Information Commissioner
           </Link>{" "}
-          and a breach of New Zealand's Privacy Principles to the{" "}
+          and a breach of New Zealand&apos;s Privacy Principles to the{" "}
           <Link href="https://www.privacy.org.nz/your-rights/making-a-complaint/">
             Office of New Zealand Privacy Commissioner
           </Link>
