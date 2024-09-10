@@ -1,15 +1,12 @@
 import "~/styles/globals.css";
 import {
   ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
 } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "~/components/navbar";
+import { dark } from '@clerk/themes';
 
 export const metadata: Metadata = {
   title: "BCUW",
@@ -23,7 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider 
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
       <html lang="en" className={`${GeistSans.variable}`}>
         <body className="w-screen h-screen bg-secondary">
           <ThemeProvider
