@@ -62,10 +62,10 @@ export default async function HomePage() {
           </div>
           <div className="text-center">
             {userNickname ? (
-              <p>Welcome {userNickname}!</p>
+              <p>Welcome <span className="mention">@{userNickname}</span>!</p>
             ) : (
               <p className="flex flex-row items-center justify-center">
-                Please sign up and/or join the&#32;
+                Please sign in/up and/or join the&#32;
                 <Link
                   href="https://discord.gg/blossomcraft"
                   className="prose-a row flex"
@@ -107,8 +107,15 @@ export default async function HomePage() {
               <li>non-crate Blossom Items</li>
             </ul>
             <p>
-              But the wiki has started being more of a general-purpose Wiki. and now it is gaining more features like a Player Warp Registry and Trading Marketplace!
+              But the wiki has started being more of a general-purpose Wiki. and now it is gaining more features like a Player Warp Registry and a Trading Marketplace!
             </p>
+            <h3>Have Questions, Feedback, Suggestions, or want to help?</h3>
+            <p>Contact me in one of the following ways:</p>
+            <ul>
+              <li>Discord DM: <span className="mention">@Altie122</span></li>
+              <li>Email: <a href="mailto:bcuwdotxyz@pm.me">bcuwdotxyz@pm.me</a></li>
+              <li>or Altie122 on most social media platforms, altie133 if on reddit</li>
+            </ul>
           </div>
         </main>
       </div>
