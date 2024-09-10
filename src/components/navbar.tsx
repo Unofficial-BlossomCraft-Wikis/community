@@ -16,6 +16,7 @@ export default function Navbar() {
               alt="BCUW"
               width={64}
               height={64}
+              unoptimized 
             />
           </Link>
         </Button>

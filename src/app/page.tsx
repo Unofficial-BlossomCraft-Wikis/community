@@ -52,6 +52,7 @@ export default async function HomePage() {
                 }}
                 width={400}
                 height={400}
+                unoptimized
               />
             </div>
           </div>
