@@ -1,15 +1,23 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { getOAuthToken } from "~/lib/auth/discord";
 import { getUserNickname } from "~/lib/getusernickname";
+import Image from "next/image";
+import { data } from "~/server/queries";
 
 export default async function HomePage() {
   const user = await currentUser();
   let userNickname: string | null | undefined = null;
   if (user) {
-    const token = await getOAuthToken();
-    console.log(token);
-    if (token) {
-      userNickname = await getUserNickname(token);
+    const user_data = await data.get.getUser(user.id);
+    if (user_data == "user not found" || user_data == undefined) {
+      const token = await getOAuthToken();
+      if (token) {
+        userNickname = await getUserNickname(token);
+      }
+      data.post.createUser(user.id, userNickname);
+    }
+    if (user_data?.discord_username) {
+      userNickname = user_data?.discord_username;
     }
   }
   return (
@@ -26,13 +34,15 @@ export default async function HomePage() {
               </p>
             </div>
             <div className="flex items-center justify-center md:basis-1/2">
-              <img
+              <Image 
                 src="/bcuwTitleNormal.png"
                 alt="BCUW"
                 className="h-auto w-1/2"
                 style={{
                   filter: "drop-shadow(0 0 3rem hsla(306, 66%, 66%, 0.2))",
                 }}
+                width={400}
+                height={400}
               />
             </div>
           </div>

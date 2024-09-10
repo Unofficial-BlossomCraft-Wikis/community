@@ -9,7 +9,6 @@ import {
   varchar,
   uuid,
   json,
-  boolean,
 } from "drizzle-orm/pg-core";
 
 /**
