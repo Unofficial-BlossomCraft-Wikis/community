@@ -21,9 +21,13 @@ export const LegalPages = [
     "path": "/legal/privacy-policy"
   },
   {
-    "name": "Cookie Policy",
-    "path": "/legal/cookies"
-  }
+    "name": "Credits",
+    "path": "/legal/credits"
+  },
+  // {
+  //   "name": "Cookie Policy",
+  //   "path": "/legal/cookies"
+  // }
 ]
 
 export type Crates = {
@@ -69,4 +73,17 @@ export type DiscordGuildMemberType = {
       permissions?: string;
       communication_disabled_until?: string;
       avatar_decoration_data?: APIAvatarDecorationData;
+}
+
+export type labels = {
+  label?: boolean;
+  labelSide?: "left" | "right";
+}
+
+export type SidebarButtonType = {
+  name: string;
+  path: string;
+  dangerouslySetInnerHTML?: {
+    __html: string;
+  };
 }

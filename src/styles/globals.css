@@ -64,6 +64,12 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* chrome zero-js view transitions */
+  :root {
+    @view-transition {
+      navigation: auto;
+    }
+  }
 }
 
 @layer utilities {
@@ -123,15 +129,15 @@
     @apply font-bold;
   }
   .mention {
-    border-radius: 3px;
-    padding: 0 2px;
-    transition: background-color 50ms ease-out, color 50ms ease-out;
-    cursor: pointer;
-    border-radius: 3px;
-    padding: 0 2px;
-    font-weight: 500;
-    unicode-bidi: plaintext;
-    color: color-mix(in oklab, var(--brand-260) 100%, var(--theme-text-color, black) var(--theme-text-color-amount, 0%));;
-    background: color-mix(in oklab, hsl(235 calc(1 * 85.6%) 64.7% / 0.3) 100%, hsl(var(--theme-base-color-hsl, 0 0% 0%) / 0.3) var(--theme-base-color-amount, 0%));;
+    border-radius: 3px !important;
+    padding: 0 2px !important;
+    transition: background-color 50ms ease-out, color 50ms ease-out !important;
+    cursor: pointer !important;
+    border-radius: 3px !important;
+    padding: 0 2px !important;
+    font-weight: 500 !important;
+    unicode-bidi: plaintext !important;
+    color: color-mix(in oklab, var(--brand-260) 100%, var(--theme-text-color, black) var(--theme-text-color-amount, 0%)) !important;;
+    background: color-mix(in oklab, hsl(235 calc(1 * 85.6%) 64.7% / 0.3) 100%, hsl(var(--theme-base-color-hsl, 0 0% 0%) / 0.3) var(--theme-base-color-amount, 0%)) !important;;
   }
 }

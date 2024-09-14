@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { Button } from "~/components/ui/button";
 import { LegalPages } from "~/lib/consts";
+import SidebarButton from "~/components/sidebar-button";
 
 export default async function RootLayout({
   children,
@@ -13,16 +12,11 @@ export default async function RootLayout({
         {LegalPages.map((data) => {
           const name = data.name.replaceAll(" ", "<br />");
           return (
-            <Button key={data.name} variant={"outline"} asChild>
-              <Link
-                href={data.path}
-                dangerouslySetInnerHTML={{ __html: name }}
-              />
-            </Button>
+            <SidebarButton key={data.path} name={data.name} path={data.path} dangerouslySetInnerHTML={{ __html: name }} />
           );
         })}
       </div>
-      <div className="h-[calc(100%-0.5rem)] w-[calc((100vw-4rem)-1rem)]">
+      <div className="h-[calc(100%-0.5rem)] w-[calc(100vw-4rem-1rem)]">
         {children}
       </div>
     </div>

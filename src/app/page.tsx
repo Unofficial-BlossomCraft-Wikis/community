@@ -35,7 +35,7 @@ export default async function HomePage() {
     <div className="h-[calc(100vh-4rem)]">
       <div className="h-[calc(100%-0.5rem)] w-[calc(100vw-1rem)]">
         <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
-          <div className="flex h-[50%] justify-center md:flex-row">
+          <div className="flex h-[50%] justify-center md:flex-row flex-col-reverse">
             <div className="prose flex flex-col items-center justify-center text-center md:basis-1/2">
               <h1>BCUW</h1>
               <p>
