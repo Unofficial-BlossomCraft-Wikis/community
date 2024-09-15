@@ -44,7 +44,7 @@ export default async function HomePage() {
         <p>Current Nickname:</p>
         <b className="mention">{userData.discord_username}</b>
         <p>Current Roles:</p>
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row gap-2 flex-wrap">
           {userData.iscelestial && (
             <Badge variant={"celestial"}>Celestial</Badge>
           )}
@@ -55,7 +55,7 @@ export default async function HomePage() {
           {userData.ispancake && <Badge variant={"pancake"}>Pancake</Badge>}
         </div>
         <p>Current Servers:</p>
-        <div className="flex flex-row gap-2 pb-2">
+        <div className="flex flex-row gap-2 pb-2 flex-wrap">
           {userData.cherry && <Badge variant={"cherry"}>Cherry</Badge>}
           {userData.spirit && <Badge variant={"spirit"}>Spirit</Badge>}
           {userData.lotus && <Badge variant={"lotus"}>Lotus</Badge>}
