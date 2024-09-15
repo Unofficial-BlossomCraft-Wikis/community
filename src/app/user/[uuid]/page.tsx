@@ -76,7 +76,7 @@ export default async function HomePage({
             </Avatar>
           </div>
         </div>
-        <h2>Pw&apos;s:</h2>
+        <h2>PW&apos;s:</h2>
         <PWTable columns={userPWColumns} data={pws} />
       </div>
     </main>

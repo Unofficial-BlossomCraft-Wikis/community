@@ -22,7 +22,7 @@ export function PWCreationForm({ userId }: { userId: string }) {
     try {
       // Convert serverId and pwCategory to numbers if needed
       const serverIdNum = parseInt(serverId, 10);
-      await newPW(name, commandName, description, serverIdNum, userId, [], pwCategory as any);
+      await newPW(name, commandName, description, serverIdNum, userId, [], pwCategory as pwcategories);
 
       toast.success("PW created successfully!");
     } catch (error) {
