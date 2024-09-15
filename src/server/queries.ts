@@ -25,13 +25,13 @@ export const data = {
         const olduserdata = await data.get.getUser(id);
         if (olduserdata == null || olduserdata == undefined || olduserdata == "user not found") {
           const memberData = await getUserData(token);
-          const hasRole = (role: any) => memberData!.roles?.includes(role);
+          const hasRole = (role: string) => memberData!.roles?.includes(role);
   
           const iscelestial = hasRole(rankDiscordRoles.CELESTRIAL);
-          const isimmortal = iscelestial || hasRole(rankDiscordRoles.Immortal);
-          const isemperor = isimmortal || hasRole(rankDiscordRoles.Emperor);
-          const isshogun = isemperor || hasRole(rankDiscordRoles.Shogun);
-          const issamurai = isshogun || hasRole(rankDiscordRoles.Samurai);
+          const isimmortal = iscelestial ?? hasRole(rankDiscordRoles.Immortal);
+          const isemperor = isimmortal ?? hasRole(rankDiscordRoles.Emperor);
+          const isshogun = isemperor ?? hasRole(rankDiscordRoles.Shogun);
+          const issamurai = isshogun ?? hasRole(rankDiscordRoles.Samurai);
           const ispancake = hasRole(rankDiscordRoles.Pancake);
           const cherry = hasRole(rankDiscordRoles.Cherry);
           if (cherry) {
@@ -72,13 +72,13 @@ export const data = {
           return;
         }
         const memberData = await getUserData(token);
-        const hasRole = (role: any) => memberData!.roles?.includes(role);
+        const hasRole = (role: string) => memberData!.roles?.includes(role);
 
         const iscelestial = hasRole(rankDiscordRoles.CELESTRIAL);
-        const isimmortal = iscelestial || hasRole(rankDiscordRoles.Immortal);
-        const isemperor = isimmortal || hasRole(rankDiscordRoles.Emperor);
-        const isshogun = isemperor || hasRole(rankDiscordRoles.Shogun);
-        const issamurai = isshogun || hasRole(rankDiscordRoles.Samurai);
+        const isimmortal = iscelestial ?? hasRole(rankDiscordRoles.Immortal);
+        const isemperor = isimmortal ?? hasRole(rankDiscordRoles.Emperor);
+        const isshogun = isemperor ?? hasRole(rankDiscordRoles.Shogun);
+        const issamurai = isshogun ?? hasRole(rankDiscordRoles.Samurai);
         const ispancake = hasRole(rankDiscordRoles.Pancake);
         const cherry = hasRole(rankDiscordRoles.Cherry);
         if (cherry && olduserdata.cherry == false) {
@@ -126,13 +126,13 @@ export const data = {
           .where(eq(sql`${sql`id`}`, id));
       },
       async create(id: string, memberData: DiscordGuildMemberType) {
-        const hasRole = (role: any) => memberData.roles?.includes(role);
+        const hasRole = (role: string) => memberData.roles?.includes(role);
 
         const iscelestial = hasRole(rankDiscordRoles.CELESTRIAL);
-        const isimmortal = iscelestial || hasRole(rankDiscordRoles.Immortal);
-        const isemperor = isimmortal || hasRole(rankDiscordRoles.Emperor);
-        const isshogun = isemperor || hasRole(rankDiscordRoles.Shogun);
-        const issamurai = isshogun || hasRole(rankDiscordRoles.Samurai);
+        const isimmortal = iscelestial ?? hasRole(rankDiscordRoles.Immortal);
+        const isemperor = isimmortal ?? hasRole(rankDiscordRoles.Emperor);
+        const isshogun = isemperor ?? hasRole(rankDiscordRoles.Shogun);
+        const issamurai = isshogun ?? hasRole(rankDiscordRoles.Samurai);
         const ispancake = hasRole(rankDiscordRoles.Pancake);
         const cherry = hasRole(rankDiscordRoles.Cherry);
         if (cherry) {
