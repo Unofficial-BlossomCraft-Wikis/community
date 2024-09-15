@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
 import { data } from '~/server/queries';
-import type { Items } from '@/lib/consts';
+// import type { Items } from '@/lib/consts';
 import { redirect } from 'next/navigation';
 
 export default async function HomePage({ params }: { params: { slug: string } }) {

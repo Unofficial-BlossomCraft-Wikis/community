@@ -6,7 +6,7 @@ import { data } from "~/server/queries";
 import BCUW from "../../public/bcuwTitleNormal.png";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { DiscordGuildMemberType } from "~/lib/consts";
+import type { DiscordGuildMemberType } from "~/lib/consts";
 
 export default async function HomePage() {
   const user = await currentUser();

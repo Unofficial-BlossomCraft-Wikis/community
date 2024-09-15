@@ -111,3 +111,10 @@ export const crates = createTable("crate", {
   path: varchar("path").notNull(),
   items: json("items"),
 });
+
+export const playerwarps = createTable("playerwarp", {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: varchar("name").notNull(),
+  ownerid: varchar("ownerid").references(() => users.id),
+  items: json("items"),
+});

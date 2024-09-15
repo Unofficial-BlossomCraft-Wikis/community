@@ -1,7 +1,7 @@
 import { eq, sql } from "drizzle-orm";
 import { db } from "./db";
-import { buying, items, selling, servers, users } from "./db/schema";
-import { DiscordGuildMemberType, rankDiscordRoles } from "~/lib/consts";
+import { buying, selling, servers, users } from "./db/schema";
+import { type DiscordGuildMemberType, rankDiscordRoles } from "~/lib/consts";
 import { getUserData } from "~/lib/getusernickname";
 import { clerkClient } from "@clerk/nextjs/server";
 

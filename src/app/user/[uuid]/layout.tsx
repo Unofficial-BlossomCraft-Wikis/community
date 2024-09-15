@@ -1,5 +1,3 @@
-import SidebarButton from "~/components/sidebar-button";
-
 export default async function RootLayout({
   children,
 }: {

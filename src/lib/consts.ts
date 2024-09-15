@@ -1,4 +1,5 @@
-import { APIAvatarDecorationData, APIUser, GuildMemberFlags, Snowflake } from "discord-api-types/v10";
+import type { APIAvatarDecorationData, APIUser, GuildMemberFlags, Snowflake } from "discord-api-types/v10";
+import type { ColumnDef } from "@tanstack/react-table"
 
 export const WikiPages = [
   {
@@ -36,27 +37,6 @@ export type Crates = {
   name: string;
   btn_name: string;
   items: string[];
-}
-
-export type Items = {
-  id: string;
-  path: string;
-  slug: string;
-  name: string;
-  crate: string;
-  crate_slug: string;
-  crate_path: string;
-  rarity: string;
-  lore: string;
-  image_url: string;
-  mono_image_url: string;
-  item_slot_image_url: string;
-  winchance: number;
-  enchantments?: { name: string, level: number }[];
-  unmodifiable?: boolean;
-  unbreakable?: boolean;
-  dyed?: boolean;
-  customtexture?: boolean;
 }
 
 export type DiscordGuildMemberType = {
@@ -99,4 +79,32 @@ export const rankDiscordRoles = {
   Spirit: "901686245938307082",
   Lotus: "938487284364353577",
   Tulip: "990370978775310376",
+}
+
+export type item = {
+  id: string;
+  name: string;
+  btn_name: string;
+  path: string;
+  crate: string;
+  crate_path: string;
+  rarity: string;
+  image_url: string;
+  mono_image_url: string;
+  item_slot_image_url: string;
+  winchance: number;
+  enchantments?: string[];
+  unmodifiable: boolean;
+  unbreakable: boolean;
+  dyed: boolean;
+  customtexture: boolean;
+}
+
+export type userItems = {
+  name: string;
+  forsale: boolean;
+  quantity: number;
+  quantity_forsale: number;
+  price: number;
+  server: string;
 }
