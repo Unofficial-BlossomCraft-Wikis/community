@@ -26,7 +26,7 @@ export default async function HomePage() {
     );
   }
 
-  const useritems = userData.items ?? [];
+  const useritems = Array.isArray(userData.items) ? userData.items : [];
   const items: userItems[] = useritems.map((item: userItems) => item);
 
   return (
