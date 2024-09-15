@@ -1,12 +1,11 @@
 import "~/styles/globals.css";
-import {
-  ClerkProvider,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "~/components/theme-provider";
 import Navbar from "~/components/navbar";
-import { dark } from '@clerk/themes';
+import { dark } from "@clerk/themes";
+import { Toaster } from "~/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "BCUW",
@@ -20,13 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider 
+    <ClerkProvider
       appearance={{
         baseTheme: dark,
       }}
     >
       <html lang="en" className={`${GeistSans.variable}`}>
-        <body className="w-screen h-screen bg-secondary">
+        <body className="h-screen w-screen bg-secondary">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -35,6 +34,7 @@ export default function RootLayout({
           >
             <Navbar />
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

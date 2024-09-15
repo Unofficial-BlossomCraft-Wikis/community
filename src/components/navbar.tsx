@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { ThemeToggle } from "./theme-toggle";
-import { UserButton, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import BCUW from "../../public/bcuwOnlyTitleNormal.png";
 import { CommunityButton, HomeButton, LegalButton, WikiButton } from "./navbar-buttons";
 import {
@@ -15,6 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Separator } from "./ui/separator";
+import UserButton from "./user-button";
 
 export default function Navbar() {
   return (
@@ -42,12 +42,7 @@ export default function Navbar() {
           <Button variant="outline" asChild className="max-md:hidden">
             <Link href="https://www.bcuw.xyz">Production Site</Link>
           </Button>
-          <SignedOut>
-            <SignInButton mode="modal" />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          <UserButton />
           <ThemeToggle />
         </div>
       </div>

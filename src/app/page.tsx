@@ -1,11 +1,12 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { getOAuthToken } from "~/lib/auth/discord";
-import { getUserNickname } from "~/lib/getusernickname";
+import { getUserData, getUserNickname } from "~/lib/getusernickname";
 import Image from "next/image";
 import { data } from "~/server/queries";
 import BCUW from "../../public/bcuwTitleNormal.png";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
+import { DiscordGuildMemberType } from "~/lib/consts";
 
 export default async function HomePage() {
   const user = await currentUser();
@@ -14,11 +15,17 @@ export default async function HomePage() {
     const user_data = await data.get.getUser(user.id);
     if (user_data == "user not found" || user_data == undefined) {
       const token = await getOAuthToken();
+      let memberData: DiscordGuildMemberType | null | undefined = null;
       if (token) {
-        userNickname = await getUserNickname(token);
+        memberData = await getUserData(token);
+        if (memberData == null || memberData == undefined) {
+          userNickname = user.username;
+        } else {
+          userNickname = memberData.nick ?? memberData.user?.username ?? memberData.user?.global_name;
+        }
       }
-      if (userNickname != null || userNickname != undefined) {
-        await data.post.createUser(user.id, userNickname);
+      if (memberData != null || memberData != undefined) {
+        await data.post.user.create(user.id, memberData);
       }
     }
     if (
@@ -35,14 +42,14 @@ export default async function HomePage() {
     <div className="h-[calc(100vh-4rem)]">
       <div className="h-[calc(100%-0.5rem)] w-[calc(100vw-1rem)]">
         <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
-          <div className="flex h-[50%] justify-center md:flex-row flex-col-reverse">
+          <div className="flex h-[50%] flex-col-reverse justify-center md:flex-row">
             <div className="prose flex flex-col items-center justify-center text-center md:basis-1/2">
               <h1>BCUW</h1>
               <p>
                 BlossomCraft Unofficial Wiki
                 <br />
                 V4 Alpha
-                <br/>
+                <br />
                 Owned and maintained by Altie122
               </p>
             </div>
@@ -62,7 +69,9 @@ export default async function HomePage() {
           </div>
           <div className="text-center">
             {userNickname ? (
-              <p>Welcome <span className="mention">@{userNickname}</span>!</p>
+              <p>
+                Welcome <span className="mention">@{userNickname}</span>!
+              </p>
             ) : (
               <p className="flex flex-row items-center justify-center">
                 Please sign in/up and/or join the&#32;
@@ -92,7 +101,9 @@ export default async function HomePage() {
                 Accounts for features such as Trading and the player warp
                 registry (<b className="text-red-600">REMEMBER:</b> this is an
                 unofficial site, this account is in no way connected to
-                BlossomCraft and is not stored on blossomcraft run servers. If you are not comfortable with this, please <b>do not</b> make an account.)
+                BlossomCraft and is not stored on blossomcraft run servers. If
+                you are not comfortable with this, please <b>do not</b> make an
+                account.)
               </li>
             </ul>
             <h2>What is the BCUW?</h2>
@@ -107,14 +118,23 @@ export default async function HomePage() {
               <li>non-crate Blossom Items</li>
             </ul>
             <p>
-              But the wiki has started being more of a general-purpose Wiki. and now it is gaining more features like a Player Warp Registry and a Trading Marketplace!
+              But the wiki has started being more of a general-purpose Wiki. and
+              now it is gaining more features like a Player Warp Registry and a
+              Trading Marketplace!
             </p>
             <h3>Have Questions, Feedback, Suggestions, or want to help?</h3>
             <p>Contact me in one of the following ways:</p>
             <ul>
-              <li>Discord DM: <span className="mention">@Altie122</span></li>
-              <li>Email: <a href="mailto:bcuwdotxyz@pm.me">bcuwdotxyz@pm.me</a></li>
-              <li>or Altie122 on most social media platforms, altie133 if on reddit</li>
+              <li>
+                Discord DM: <span className="mention">@Altie122</span>
+              </li>
+              <li>
+                Email: <a href="mailto:bcuwdotxyz@pm.me">bcuwdotxyz@pm.me</a>
+              </li>
+              <li>
+                or Altie122 on most social media platforms, altie133 if on
+                reddit
+              </li>
             </ul>
           </div>
         </main>

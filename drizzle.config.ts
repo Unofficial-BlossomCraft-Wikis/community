@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["bcuw-rewrite_*"],
+  tablesFilter: ["bcuw_*"],
 } satisfies Config;

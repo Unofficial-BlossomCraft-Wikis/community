@@ -19,7 +19,6 @@ export async function getOAuthToken() {
   // Assuming there's at least one access token in the response
   if (clerkResponse.totalCount > 0) {
     const accessToken = clerkResponse.data[0]!.token; // Access the first token's value
-    console.log("Access token:", accessToken);
     return accessToken;
   } else {
     console.log("No access token found for the specified provider.");

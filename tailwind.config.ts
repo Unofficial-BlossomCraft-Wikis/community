@@ -21,6 +21,50 @@ export default {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
+				ranks: {
+					celestial: {
+						DEFAULT: 'var(--celestial)',
+						foreground: 'var(--celestial-foreground)'
+					},
+					immortal: {
+						DEFAULT: 'var(--immortal)',
+						foreground: 'var(--immortal-foreground)'
+					},
+					emperor: {
+						DEFAULT: 'var(--emperor)',
+						foreground: 'var(--emperor-foreground)'
+					},
+					shogun: {
+						DEFAULT: 'var(--shogun)',
+						foreground: 'var(--shogun-foreground)'
+					},
+					samurai: {
+						DEFAULT: 'var(--samurai)',
+						foreground: 'var(--samurai-foreground)'
+					},
+					pancake: {
+						DEFAULT: 'var(--pancake)',
+						foreground: 'var(--pancake-foreground)'
+					}
+				},
+				servers: {
+					cherry: {
+						DEFAULT: 'var(--cherry)',
+						foreground: 'var(--cherry-foreground)'
+					},
+					spirit: {
+						DEFAULT: 'var(--spirit)',
+						foreground: 'var(--spirit-foreground)'
+					},
+					lotus: {
+						DEFAULT: 'var(--lotus)',
+						foreground: 'var(--lotus-foreground)'
+					},
+					tulip: {
+						DEFAULT: 'var(--tulip)',
+						foreground: 'var(--tulip-foreground)'
+					}
+				},
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
@@ -55,7 +99,16 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
+  		},
+			keyframes: {
+        'caret-blink': {
+          '0%,70%,100%': { opacity: '1' },
+          '20%,50%': { opacity: '0' },
+        },
+      },
+      animation: {
+        'caret-blink': 'caret-blink 1.25s ease-out infinite',
+      },
   	}
   },
   plugins: [require("tailwindcss-animate")],

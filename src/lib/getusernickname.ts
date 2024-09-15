@@ -19,7 +19,6 @@ const fetchGuildMember = async (accessToken: string) => {
     }
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const memberData: DiscordGuildMemberType = await response.json();
-    console.log(memberData);
     return memberData;
   } catch (error) {
     console.error("Error fetching guild member:", error);
@@ -32,11 +31,22 @@ export const getUserNickname = async (accessToken: string) => {
     if (!memberData) {
       return null;
     }
-    // The nickname is in the 'nick' field
     const nickname = memberData.nick ?? memberData.user?.username ?? memberData.user?.global_name;
-    console.log("User Nickname:", nickname);
 
     return nickname;
+  } catch (error) {
+    console.error("Error fetching user nickname:", error);
+  }
+};
+
+export const getUserData = async (accessToken: string) => {
+  try {
+    const memberData = await fetchGuildMember(accessToken);
+    if (!memberData) {
+      return null;
+    }
+
+    return memberData;
   } catch (error) {
     console.error("Error fetching user nickname:", error);
   }

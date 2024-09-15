@@ -9,6 +9,7 @@ import {
   varchar,
   uuid,
   json,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 /**
@@ -60,8 +61,20 @@ export const servers = createTable("server", {
 
 export const users = createTable("user", {
   id: varchar("id").primaryKey(),
-  mc_username: varchar("name", { length: 16 }),
+  mc_username: varchar("mc_username", { length: 16 }),
   discord_username: varchar("discord_username"),
+  isbcuw: boolean("isbcuw").default(false),
+  isbcuw_admin: boolean("isbcuw_admin").default(false),
+  iscelestial: boolean("iscelestial").default(false),
+  isimmortal: boolean("isimmortal").default(false),
+  isemperor: boolean("isemperor").default(false),
+  isshogun: boolean("isshogun").default(false),
+  issamurai: boolean("issamurai").default(false),
+  ispancake: boolean("ispancake").default(false),
+  cherry: boolean("cherry").default(false),
+  spirit: boolean("spirit").default(false),
+  lotus: boolean("lotus").default(false),
+  tulip: boolean("tulip").default(false),
   items: json("items"),
   createdAt: timestamp("created_at", { withTimezone: true })
     .defaultNow()
@@ -71,10 +84,29 @@ export const users = createTable("user", {
   ),
 });
 
-export const user_servers = createTable("user_server", {
-  user_id: varchar('user_id').references(() => users.id),
-  server_id: serial('server_id').references(() => servers.id),
-  createdAt: timestamp("created_at", { withTimezone: true })
-    .defaultNow()
-    .notNull(),
+export const items = createTable("item", {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: varchar("name").notNull(),
+  button_name: varchar("button_name").notNull(),
+  path: varchar("path").notNull(),
+  crate: varchar("crate").notNull(),
+  crate_path: varchar("crate_path").notNull(),
+  rarity: varchar("rarity").notNull(),
+  image_url: varchar("image_url").notNull(),
+  mono_image_url: varchar("mono_image_url").notNull(),
+  item_slot_image_url: varchar("item_slot_image_url").notNull(),
+  winchance: bigint("winchance", { mode: "number" }).notNull(),
+  enchantments: json("enchantments"),
+  unmodifiable: boolean("unmodifiable").notNull().default(false),
+  unbreakable: boolean("unbreakable").notNull().default(false),
+  dyed: boolean("dyed").notNull().default(false),
+  customtexture: boolean("customtexture").notNull().default(false),
+});
+
+export const crates = createTable("crate", {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: varchar("name").notNull(),
+  button_name: varchar("button_name").notNull(),
+  path: varchar("path").notNull(),
+  items: json("items"),
 });

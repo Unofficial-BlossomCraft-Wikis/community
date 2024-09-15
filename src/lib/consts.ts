@@ -87,3 +87,16 @@ export type SidebarButtonType = {
     __html: string;
   };
 }
+
+export const rankDiscordRoles = {
+  CELESTRIAL: "819431235221979146",
+  Immortal: "766385393007984680",
+  Emperor: "766385392450142218",
+  Shogun: "766385393548787732",
+  Samurai: "766385391803957278",
+  Pancake: "1224231377247928342",
+  Cherry: "901686484724228156",
+  Spirit: "901686245938307082",
+  Lotus: "938487284364353577",
+  Tulip: "990370978775310376",
+}

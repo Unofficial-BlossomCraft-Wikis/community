@@ -3,6 +3,30 @@
 @tailwind utilities;
 @layer base {
   :root {
+    --celestial: #0cebff;
+    --celestial-foreground: #004950;
+    --immortal: #9b59b6;
+    --immortal-foreground: #2f1938;
+    --emperor: #3498db;
+    --emperor-foreground: #0c2e45;
+    --shogun: #f1c40f;
+    --shogun-foreground: #493b04;
+    --samurai: #2ecc71;
+    --samurai-foreground: #0e3d22;
+    --pancake: #eca24d;
+    --pancake-foreground: #553209;
+    --cherry: #e91e63;
+    --cherry-foreground: #48071d;
+    --spirit: #126399;
+    --spirit-foreground: #051e2e;
+    --lotus: #71368a;
+    --lotus-foreground: #221029;
+    --tulip: #c27c0e;
+    --tulip-foreground: #3a2504;
+  }
+}
+@layer base {
+  :root {
     --background: 306 100% 95%;
     --foreground: 306 5% 0%;
     --card: 306 50% 90%;
@@ -137,7 +161,6 @@
     padding: 0 2px !important;
     font-weight: 500 !important;
     unicode-bidi: plaintext !important;
-    color: color-mix(in oklab, var(--brand-260) 100%, var(--theme-text-color, black) var(--theme-text-color-amount, 0%)) !important;;
-    background: color-mix(in oklab, hsl(235 calc(1 * 85.6%) 64.7% / 0.3) 100%, hsl(var(--theme-base-color-hsl, 0 0% 0%) / 0.3) var(--theme-base-color-amount, 0%)) !important;;
+    background: hsl(235 calc(1 * 85.6%) 64.7% / 0.3) 100% !important;;
   }
 }
