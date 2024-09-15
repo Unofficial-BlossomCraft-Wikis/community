@@ -2,6 +2,8 @@ import { clerkClient } from "@clerk/nextjs/server";
 import { Avatar, AvatarImage, AvatarFallback } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { Separator } from "~/components/ui/separator";
+import { PWTable, userPWColumns } from "~/components/user-pw-table";
+import { playerWarpType } from "~/lib/consts";
 import { data } from "~/server/queries";
 
 export default async function HomePage({
@@ -18,6 +20,9 @@ export default async function HomePage({
       </main>
     );
   }
+  const pwfetch = await data.get.pw.getPlayerWarpsByOwner(user.id);
+  const pws: playerWarpType[] =
+    pwfetch == "playerwarp not found" ? [] : (pwfetch as playerWarpType[]);
   const clerkUser = await clerkClient().users.getUser(user.id);
   return (
     <main className="mx-2 mb-2 h-full w-full scroll-auto rounded-lg bg-background p-2">
@@ -71,6 +76,8 @@ export default async function HomePage({
             </Avatar>
           </div>
         </div>
+        <h2>Pw&apos;s:</h2>
+        <PWTable columns={userPWColumns} data={pws} />
       </div>
     </main>
   );

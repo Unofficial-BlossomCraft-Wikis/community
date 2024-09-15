@@ -33,6 +33,7 @@ export default async function HomePage() {
     <main className="mx-2 mb-2 h-full w-full scroll-auto rounded-lg bg-background p-2">
       <div className="prose">
         <h2>Your Items</h2>
+        <br/>
         <OwnerSide columns={userItemsColumns} data={items} />
       </div>
     </main>

@@ -1,5 +1,4 @@
 import type { APIAvatarDecorationData, APIUser, GuildMemberFlags, Snowflake } from "discord-api-types/v10";
-import type { ColumnDef } from "@tanstack/react-table"
 
 export const WikiPages = [
   {
@@ -107,4 +106,30 @@ export type userItems = {
   quantity_forsale: number;
   price: number;
   server: string;
+}
+
+export enum pwcategories {
+  misc = "misc",
+  shop = "shop",
+  town = "town",
+  farm = "farm",
+  base = "base",
+}
+
+export enum pwflagreasons {
+  DoesNotExist = "Does not Exist",
+  HarmfulContent = "Harmful content",
+}
+
+export type playerWarpType = {
+  id: string;
+  name: string;
+  command_name: string;
+  description: string;
+  ownerid: string;
+  serverid: number;
+  flagged: boolean;
+  flagreason: pwflagreasons;
+  pwcategory: pwcategories;
+  items: string[];
 }

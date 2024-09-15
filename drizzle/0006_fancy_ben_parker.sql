@@ -1,0 +1,1 @@
+ALTER TABLE "bcuw_playerwarp" ADD COLUMN "description" varchar DEFAULT '';

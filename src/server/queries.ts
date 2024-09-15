@@ -1,7 +1,7 @@
 import { eq, sql } from "drizzle-orm";
 import { db } from "./db";
-import { buying, selling, servers, users } from "./db/schema";
-import { type DiscordGuildMemberType, rankDiscordRoles } from "~/lib/consts";
+import { buying, playerwarps, selling, servers, users } from "./db/schema";
+import { type DiscordGuildMemberType, pwcategories, rankDiscordRoles } from "~/lib/consts";
 import { getUserData } from "~/lib/getusernickname";
 import { clerkClient } from "@clerk/nextjs/server";
 
@@ -40,6 +40,41 @@ export const data = {
         return "user not found";
       }
     },
+    pw: {
+      async getPlayerWarp(id: string) {
+        try {
+          const playerwarp = await db.query.playerwarps.findFirst({
+            where: eq(sql`${sql`id`}`, id),
+          });
+          return playerwarp;
+        } catch (e) {
+          console.log(e);
+          return "playerwarp not found";
+        }
+      },
+      async getPlayerWarpsByOwner(id: string) {
+        try {
+          const playerwarps = await db.query.playerwarps.findMany({
+            where: eq(sql`${sql`ownerid`}`, id),
+          });
+          return playerwarps;
+        } catch (e) {
+          console.log(e);
+          return "playerwarp not found";
+        }
+      },
+      async getPlayerWarpsByServer(id: string) {
+        try {
+          const playerwarps = await db.query.playerwarps.findMany({
+            where: eq(sql`${sql`serverid`}`, id),
+          });
+          return playerwarps;
+        } catch (e) {
+          console.log(e);
+          return "playerwarp not found";
+        }
+      },
+    }
   },
   post: {
     user: {
@@ -209,11 +244,25 @@ export const data = {
         },
       },
     },
+    pw: {
+      async newPlayerWarp(name: string, command_name: string, description: string, serverid: number, ownerid: string, items: string[], pwcategory: pwcategories) {
+        await db.insert(playerwarps).values({
+          name,
+          command_name,
+          description,
+          ownerid,
+          serverid,
+          pwcategory,
+          items,
+        });
+      }
+    }
   },
   delete: {
     async deleteUser(id: string) {
       await db.delete(buying).where(eq(sql`${sql`buyer_id`}`, id));
       await db.delete(selling).where(eq(sql`${sql`seller_id`}`, id));
+      await db.delete(playerwarps).where(eq(sql`${sql`ownerid`}`, id));
       const userdata = await data.get.getUser(id);
       if (userdata == null || userdata == undefined || userdata == "user not found") {
         return;
@@ -232,6 +281,9 @@ export const data = {
       }
       await clerkClient.users.deleteUser(id)
       await db.delete(users).where(eq(sql`${sql`id`}`, id));
+    },
+    async deletePlayerWarp(id: string) {
+      await db.delete(playerwarps).where(eq(sql`${sql`id`}`, id));
     }
   }
 };

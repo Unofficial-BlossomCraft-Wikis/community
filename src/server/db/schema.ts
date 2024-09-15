@@ -10,6 +10,7 @@ import {
   uuid,
   json,
   boolean,
+  pgEnum,
 } from "drizzle-orm/pg-core";
 
 /**
@@ -102,6 +103,9 @@ export const items = createTable("item", {
   unbreakable: boolean("unbreakable").notNull().default(false),
   dyed: boolean("dyed").notNull().default(false),
   customtexture: boolean("customtexture").notNull().default(false),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
+    () => new Date(),
+  ),
 });
 
 export const crates = createTable("crate", {
@@ -110,11 +114,29 @@ export const crates = createTable("crate", {
   button_name: varchar("button_name").notNull(),
   path: varchar("path").notNull(),
   items: json("items"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
+    () => new Date(),
+  ),
 });
+
+export const pwcategories = pgEnum("pwcategory", ["misc", "shop", "town", "farm", "base"]);
+export const pwflagreasons = pgEnum("pwflagreason", ["Does not Exist", "Harmful content", "Not Flagged"]);
 
 export const playerwarps = createTable("playerwarp", {
   id: uuid('id').defaultRandom().primaryKey(),
   name: varchar("name").notNull(),
-  ownerid: varchar("ownerid").references(() => users.id),
+  command_name: varchar("command_name").notNull(),
+  description: varchar("description").default(""),
+  ownerid: varchar("ownerid").references(() => users.id).notNull(),
+  serverid: serial("serverid").references(() => servers.id).notNull(),
+  pwcategory: pwcategories("pwcategory").notNull(),
   items: json("items"),
+  flagged: boolean("flagged").default(false),
+  flagreason: pwflagreasons("flagreason").default("Not Flagged"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+  .defaultNow()
+  .notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
+    () => new Date(),
+  ),
 });
