@@ -41,7 +41,7 @@ export default async function HomePage() {
       }
     }
   }
-  const altie = await data.get.getUserByNickname("🌸 Altie122")!;
+  const altie = await data.get.getUserByNickname("🌸 Altie122");
   return (
     <div className="h-[calc(100vh-4rem)]">
       <div className="h-[calc(100%-0.5rem)] w-[calc(100vw-1rem)]">
