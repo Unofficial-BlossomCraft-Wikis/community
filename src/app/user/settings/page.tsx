@@ -22,6 +22,9 @@ import { Button } from "~/components/ui/button";
 
 export default async function HomePage() {
   const user = await currentUser();
+  if (user == null || user == undefined) {
+    return <p>User not found</p>;
+  }
   const token = await getOAuthToken();
   const userData = await data.get.getUser(user.id);
   if (
