@@ -61,6 +61,7 @@ export const servers = createTable("server", {
 
 export const users = createTable("user", {
   id: varchar("id").primaryKey(),
+  uuid: uuid("uuid").defaultRandom(),
   mc_username: varchar("mc_username", { length: 16 }),
   discord_username: varchar("discord_username"),
   isbcuw: boolean("isbcuw").default(false),

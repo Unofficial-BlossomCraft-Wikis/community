@@ -1,6 +1,6 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { getOAuthToken } from "~/lib/auth/discord";
-import { getUserData, getUserNickname } from "~/lib/getusernickname";
+import { getUserData } from "~/lib/getusernickname";
 import Image from "next/image";
 import { data } from "~/server/queries";
 import BCUW from "../../public/bcuwTitleNormal.png";
@@ -21,7 +21,10 @@ export default async function HomePage() {
         if (memberData == null || memberData == undefined) {
           userNickname = user.username;
         } else {
-          userNickname = memberData.nick ?? memberData.user?.username ?? memberData.user?.global_name;
+          userNickname =
+            memberData.nick ??
+            memberData.user?.username ??
+            memberData.user?.global_name;
         }
       }
       if (memberData != null || memberData != undefined) {
@@ -38,6 +41,7 @@ export default async function HomePage() {
       }
     }
   }
+  const altie = await data.get.getUserByNickname("🌸 Altie122")!;
   return (
     <div className="h-[calc(100vh-4rem)]">
       <div className="h-[calc(100%-0.5rem)] w-[calc(100vw-1rem)]">
@@ -50,7 +54,19 @@ export default async function HomePage() {
                 <br />
                 V4 Alpha
                 <br />
-                Owned and maintained by Altie122
+                {altie && altie !== "user not found" && altie.uuid ? (
+                  <>
+                    Owned and maintained by{" "}
+                    <Link href={`/user/${altie.uuid}`} className="mention">
+                      @🌸 Altie122
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    Owned and maintained by{" "}
+                    <span className="mention">@🌸 Altie122</span>
+                  </>
+                )}
               </p>
             </div>
             <div className="flex items-center justify-center md:basis-1/2">

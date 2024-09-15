@@ -18,6 +18,28 @@ export const data = {
         return "user not found";
       }
     },
+    async getUserByNickname(nickname: string) {
+      try {
+        const user = await db.query.users.findFirst({
+          where: eq(sql`${sql`discord_username`}`, nickname),
+        });
+        return user;
+      } catch (e) {
+        console.log(e);
+        return "user not found";
+      }
+    },
+    async getUserByUUID(uuid: string) {
+      try {
+        const user = await db.query.users.findFirst({
+          where: eq(sql`${sql`uuid`}`, uuid),
+        });
+        return user;
+      } catch (e) {
+        console.log(e);
+        return "user not found";
+      }
+    },
   },
   post: {
     user: {

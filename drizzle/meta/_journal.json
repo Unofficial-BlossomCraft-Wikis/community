@@ -15,6 +15,13 @@
       "when": 1726368559028,
       "tag": "0001_colorful_swarm",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1726378966940,
+      "tag": "0002_tidy_silverclaw",
+      "breakpoints": true
     }
   ]
 }
