@@ -35,3 +35,34 @@ export default function SidebarButton({ name, path, dangerouslySetInnerHTML }: S
     </Button>
   )
 }
+
+export function FullPathSidebarButton({ name, path, dangerouslySetInnerHTML }: SidebarButtonType) {
+  const pathname = usePathname()
+  const isActive = pathname.startsWith(path)
+  if (dangerouslySetInnerHTML) {
+    if (isActive) {
+      return (
+        <Button variant="default" asChild>
+          <Link href={path} dangerouslySetInnerHTML={dangerouslySetInnerHTML} />
+        </Button>
+      )
+    }
+    return (
+      <Button variant="outline" asChild>
+        <Link href={path} dangerouslySetInnerHTML={dangerouslySetInnerHTML} />
+      </Button>
+    )
+  }
+  if (isActive) {
+    return (
+      <Button variant="default" asChild>
+        <Link href={path}>{name}</Link>
+      </Button>
+    )
+  }
+  return (
+    <Button variant="outline" asChild>
+      <Link href={path}>{name}</Link>
+    </Button>
+  )
+}
