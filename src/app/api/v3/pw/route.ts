@@ -1,13 +1,13 @@
 import { eq, sql } from 'drizzle-orm';
-import { PgSelect } from 'drizzle-orm/pg-core';
+import type { PgSelect } from 'drizzle-orm/pg-core';
 import { type NextRequest, NextResponse } from 'next/server';
 import { db } from '~/server/db';
 import { playerwarps } from '~/server/db/schema';
 
 function withPagination<T extends PgSelect>(
   qb: T,
-  page: number = 1,
-  pageSize: number = 10,
+  page = 1,
+  pageSize = 10,
 ) {
   return qb.limit(pageSize).offset((page - 1) * pageSize);
 }

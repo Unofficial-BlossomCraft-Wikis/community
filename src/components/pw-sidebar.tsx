@@ -1,17 +1,38 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FullPathSidebarButton } from './sidebar-button';
 
+// Define the item type
+interface Item {
+  command_name: string;
+  id: number;
+}
+
 function PWSidebar({ serverid }: { serverid: number }) {
-  const [items, setItems] = useState<any[]>([]);
+  const [items, setItems] = useState<Item[]>([]);  // Use Item[] instead of any[]
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  // Load items whenever the page changes
+  const loadItems = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/v3/pw?serverid=${serverid}&page=${page}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch items');
+      }
+      const newItems: Item[] = await response.json();
+      setItems((prevItems) => [...prevItems, ...newItems]);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [serverid, page]);
+
   useEffect(() => {
     loadItems();
-  }, [page]);
+  }, [page, loadItems]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,35 +46,17 @@ function PWSidebar({ serverid }: { serverid: number }) {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [loading]);
 
-  // Function to load more items
-  const loadItems = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/v3/pw?serverid=${serverid}&page=${page}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch items');
-      }
-      const newItems = await response.json();
-
-      // Append the new items to the existing ones
-      setItems((prevItems) => [...prevItems, ...newItems]);
-    } catch (error) {
-      console.error('Error fetching items:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <>
       {items.map((item, index) => (
-        <div key={index}><FullPathSidebarButton name={item.command_name} path={`/community/pw/${serverid}/${item.id}`} /></div>
+        <div key={index}>
+          <FullPathSidebarButton name={item.command_name} path={`/community/pw/${serverid}/${item.id}`} />
+        </div>
       ))}
       {loading && <div>Loading...</div>}
     </>
