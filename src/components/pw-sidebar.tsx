@@ -10,7 +10,7 @@ interface Item {
 }
 
 function PWSidebar({ serverid }: { serverid: number }) {
-  const [items, setItems] = useState<Item[]>([]);  // Use Item[] instead of any[]
+  const [items, setItems] = useState<Item[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +21,7 @@ function PWSidebar({ serverid }: { serverid: number }) {
       if (!response.ok) {
         throw new Error('Failed to fetch items');
       }
-      const newItems: Item[] = (await response.json()) as Item[];  // Explicitly type the response
+      const newItems: Item[] = (await response.json()) as Item[];
       setItems((prevItems) => [...prevItems, ...newItems]);
     } catch (error) {
       console.error('Error fetching items:', error);
@@ -31,9 +31,7 @@ function PWSidebar({ serverid }: { serverid: number }) {
   }, [serverid, page]);
 
   useEffect(() => {
-    (async () => {
-      await loadItems();  // Now we properly await the promise
-    })();
+    void loadItems();  // Use void to explicitly ignore the promise
   }, [page, loadItems]);
 
   useEffect(() => {
