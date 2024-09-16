@@ -21,7 +21,7 @@ function PWSidebar({ serverid }: { serverid: number }) {
       if (!response.ok) {
         throw new Error('Failed to fetch items');
       }
-      const newItems: Item[] = await response.json();
+      const newItems: Item[] = (await response.json()) as Item[];  // Explicitly type the response
       setItems((prevItems) => [...prevItems, ...newItems]);
     } catch (error) {
       console.error('Error fetching items:', error);
@@ -31,7 +31,9 @@ function PWSidebar({ serverid }: { serverid: number }) {
   }, [serverid, page]);
 
   useEffect(() => {
-    loadItems();
+    (async () => {
+      await loadItems();  // Now we properly await the promise
+    })();
   }, [page, loadItems]);
 
   useEffect(() => {
