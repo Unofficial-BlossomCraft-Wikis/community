@@ -62,7 +62,7 @@ export const servers = createTable("server", {
 
 export const users = createTable("user", {
   id: varchar("id").primaryKey(),
-  uuid: uuid("uuid").defaultRandom(),
+  uuid: uuid("uuid").defaultRandom().unique().notNull(),
   mc_username: varchar("mc_username", { length: 16 }),
   discord_username: varchar("discord_username"),
   isbcuw: boolean("isbcuw").default(false),
@@ -127,7 +127,7 @@ export const playerwarps = createTable("playerwarp", {
   name: varchar("name").notNull(),
   command_name: varchar("command_name").notNull(),
   description: varchar("description").default(""),
-  ownerid: varchar("ownerid").references(() => users.id).notNull(),
+  ownerid: uuid("ownerid").references(() => users.uuid).notNull(),
   serverid: serial("serverid").references(() => servers.id).notNull(),
   pwcategory: pwcategories("pwcategory").notNull(),
   items: json("items"),

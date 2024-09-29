@@ -43,7 +43,7 @@ export default async function HomePage() {
       </main>
     );
   }
-  const pwfetch = await data.get.pw.getPlayerWarpsByOwner(user.id);
+  const pwfetch = await data.get.pw.getPlayerWarpsByOwner(userData.uuid);
   const pws: playerWarpType[] =
     pwfetch == "playerwarp not found" ? [] : (pwfetch as playerWarpType[]);
   return (

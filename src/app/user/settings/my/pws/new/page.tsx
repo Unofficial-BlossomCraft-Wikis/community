@@ -55,7 +55,7 @@ export default async function HomePage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col">
-          <PWCreationForm userId={user.id} />
+          <PWCreationForm userId={userData.uuid} />
         </CardContent>
         <CardFooter>
           <p className="text-xs">Please follow offical BlossomCraft rules when naming and making the description of your player warp.</p>

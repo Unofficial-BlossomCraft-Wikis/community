@@ -15,17 +15,17 @@ export default async function HomePage({
   const user = await data.get.getUserByUUID(uuid);
   if (user == null || user == undefined || user == "user not found") {
     return (
-      <main className="mx-2 mb-2 h-full w-full scroll-auto rounded-lg bg-background p-2">
+      <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
         <h1>User Not Found</h1>
       </main>
     );
   }
-  const pwfetch = await data.get.pw.getPlayerWarpsByOwner(user.id);
+  const pwfetch = await data.get.pw.getPlayerWarpsByOwner(uuid);
   const pws: playerWarpType[] =
     pwfetch == "playerwarp not found" ? [] : (pwfetch as playerWarpType[]);
   const clerkUser = await clerkClient().users.getUser(user.id);
   return (
-    <main className="mx-2 mb-2 h-full w-full scroll-auto rounded-lg bg-background p-2">
+    <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
       <div className="prose">
         <div className="flex h-[50%] flex-col-reverse justify-center md:flex-row">
           <div className="prose flex flex-col items-center justify-center text-center md:basis-1/2">
@@ -68,7 +68,7 @@ export default async function HomePage({
             </div>
           </div>
           <div className="flex items-center justify-center md:basis-1/2">
-            <Avatar className="h-1/2 w-auto">
+            <Avatar className="h-auto w-auto">
               <AvatarImage src={clerkUser.imageUrl} className="h-full w-full" />
               <AvatarFallback className="h-full w-full">
                 {clerkUser.username ? clerkUser.username : ""}
