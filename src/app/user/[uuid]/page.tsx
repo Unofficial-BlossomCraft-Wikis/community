@@ -61,6 +61,9 @@ export default async function HomePage({
                     {user.isbcuw_admin && (
                       <Badge variant={"default"}>BCUW Admin</Badge>
                     )}
+                    {user.discord_username == "🌸 Altie122" && (
+                      <Badge variant={"default"}>BCUW Owner</Badge>
+                    )}
                   </div>
                   <Separator />
                 </>
