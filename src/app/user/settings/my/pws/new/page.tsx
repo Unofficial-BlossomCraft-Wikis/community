@@ -38,7 +38,7 @@ export default async function HomePage() {
   const userData = await data.get.getUser(user.id);
   if (!userData || userData === "user not found") {
     return (
-      <main className="mx-2 mb-2 h-full w-full scroll-auto rounded-lg bg-background p-2">
+      <main className="mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg bg-background p-2">
         <div className="prose">
           <h1>User not found.</h1>
         </div>
@@ -46,8 +46,8 @@ export default async function HomePage() {
     );
   }
   return (
-    <main className="mx-2 mb-2 flex h-full w-full flex-col items-center justify-center overflow-scroll rounded-lg bg-background p-2">
-      <Card className="w-full bg-secondary sm:w-96 overflow-scroll">
+    <main className="mx-2 mb-2 flex h-full w-full flex-col items-center justify-center overflow-y-scroll rounded-lg bg-background p-2">
+      <Card className="w-full bg-secondary sm:w-96 overflow-y-scroll">
         <CardHeader>
           <CardTitle>New PW</CardTitle>
           <CardDescription>

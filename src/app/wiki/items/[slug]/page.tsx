@@ -18,7 +18,7 @@ export default async function HomePage({
     redirect(`/wiki/items?inf=true&infslug=${slug}`);
   // }
   return (
-    <main className="bg-background mx-2 mb-2 h-full w-full scroll-auto rounded-lg p-2">
+    <main className="bg-background mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg p-2">
       {/* <h1 className="text-3xl">{item.name}</h1> */}
       {/* <Tabs defaultValue="img" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">

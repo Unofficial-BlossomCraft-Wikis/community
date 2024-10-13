@@ -15,7 +15,7 @@ import { Icons } from '~/components/ui/icons'
 
 export default function SignUpPage() {
   return (
-    <div className="rounded-lg bg-background w-full h-full overflow-scroll mx-2 mb-2 p-2 flex flex-col items-center justify-center">
+    <div className="rounded-lg bg-background w-full h-full overflow-y-scroll mx-2 mb-2 p-2 flex flex-col items-center justify-center">
       <SignUp.Root>
         <Clerk.Loading>
           {(isGlobalLoading: boolean) => (

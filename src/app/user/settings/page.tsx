@@ -34,7 +34,7 @@ export default async function HomePage() {
     return <p>User not found</p>;
   }
   return (
-    <main className="mx-2 mb-2 h-full w-full scroll-auto rounded-lg bg-background p-2">
+    <main className="mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg bg-background p-2">
       <div className="prose">
         <h2>Update Discord Data</h2>
         <p>

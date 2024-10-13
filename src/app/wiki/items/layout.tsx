@@ -1,12 +1,14 @@
+import Banner from "~/components/banner";
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <main className="rounded-lg bg-background w-full h-full scroll-auto mx-2 mb-2 p-2">
-        {children}
+    <main className="mx-2 mb-2 h-full w-full scroll-auto rounded-lg bg-background p-2">
+      <Banner />
+      {children}
     </main>
-
   );
 }

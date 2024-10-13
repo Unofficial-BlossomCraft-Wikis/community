@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
+    <main className="mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg bg-background p-2">
       <div className="prose">
         <h1>Credits</h1>
         <p>Use of BlossomCraft and its logos was granted by LegionOfBullets, Owner of the BlossomCraft Minecraft Server.</p>

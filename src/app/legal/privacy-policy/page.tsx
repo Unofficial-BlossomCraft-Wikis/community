@@ -11,7 +11,7 @@ import {
 
 export default function HomePage() {
   return (
-    <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
+    <main className="mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg bg-background p-2">
       <div className="prose">
         <h1>Privacy Policy</h1>
         <b>Last updated September 09, 2024</b>

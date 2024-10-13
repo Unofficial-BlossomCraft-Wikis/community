@@ -3,7 +3,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { Separator } from "~/components/ui/separator";
 import { PWTable, userPWColumns } from "~/components/user-pw-table";
-import { playerWarpType } from "~/lib/consts";
+import { type playerWarpType } from "~/lib/consts";
 import { data } from "~/server/queries";
 
 export default async function HomePage({
@@ -15,7 +15,7 @@ export default async function HomePage({
   const user = await data.get.getUserByUUID(uuid);
   if (user == null || user == undefined || user == "user not found") {
     return (
-      <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
+      <main className="mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg bg-background p-2">
         <h1>User Not Found</h1>
       </main>
     );
@@ -25,7 +25,7 @@ export default async function HomePage({
     pwfetch == "playerwarp not found" ? [] : (pwfetch as playerWarpType[]);
   const clerkUser = await clerkClient().users.getUser(user.id);
   return (
-    <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
+    <main className="mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg bg-background p-2">
       <div className="prose">
         <div className="flex h-[50%] flex-col-reverse justify-center md:flex-row">
           <div className="prose flex flex-col items-center justify-center text-center md:basis-1/2">

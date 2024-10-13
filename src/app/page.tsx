@@ -7,6 +7,7 @@ import BCUW from "../../public/bcuwTitleNormal.png";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import type { DiscordGuildMemberType } from "~/lib/consts";
+import Banner from "~/components/banner";
 
 export default async function HomePage() {
   const user = await currentUser();
@@ -45,7 +46,8 @@ export default async function HomePage() {
   return (
     <div className="h-[calc(100vh-4rem)]">
       <div className="h-[calc(100%-0.5rem)] w-[calc(100vw-1rem)]">
-        <main className="mx-2 mb-2 h-full w-full overflow-scroll rounded-lg bg-background p-2">
+        <main className="mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg bg-background p-2">
+        <Banner />
           <div className="flex h-[50%] flex-col-reverse justify-center md:flex-row">
             <div className="prose flex flex-col items-center justify-center text-center md:basis-1/2">
               <h1>BCUW</h1>
