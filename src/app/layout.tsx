@@ -6,6 +6,7 @@ import { ThemeProvider } from "~/components/theme-provider";
 import Navbar from "~/components/navbar";
 import { dark } from "@clerk/themes";
 import { Toaster } from "~/components/ui/sonner";
+import { type NextRequest } from "next/server";
 
 export const metadata: Metadata = {
   title: "BCUW",
@@ -15,9 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  request,
 }: {
   children: React.ReactNode;
+  request: NextRequest;
 }) {
+  
   return (
     <ClerkProvider
       appearance={{
@@ -39,5 +43,20 @@ export default function RootLayout({
         </body>
       </html>
     </ClerkProvider>
+  );
+}
+
+
+function NonUSAVisitor() {
+  return (
+    <div className="h-[calc(100vh-4rem)]">
+      <div className="h-[calc(100%-0.5rem)] w-[calc(100vw-1rem)]">
+        <main className="mx-2 mb-2 h-full w-full overflow-y-scroll rounded-lg bg-background p-2">
+          <div>
+
+          </div>
+        </main>
+      </div>
+    </div>
   );
 }
