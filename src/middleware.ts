@@ -7,7 +7,7 @@ const isProtectedRoute = createRouteMatcher(["/user/settings(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
   const ip = req.headers.get('X-Forwarded-For');
-  req.cookies.set('client-ip', ip || 'unknown');
+  req.cookies.set('client-ip', ip ?? 'unknown');
   if (ip) {
     const isInUSA = await isUSAVisitor(ip);
     if (!isInUSA) {
@@ -34,7 +34,9 @@ async function isUSAVisitor(ip: string): Promise<boolean> {
   }
   try {
     const response = await axios.get(`http://ip-api.com/json/${ip}`);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const data = response.data;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return data.countryCode === 'US';
   } catch (error) {
     console.error('Error fetching location:', error);
